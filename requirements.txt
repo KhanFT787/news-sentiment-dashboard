@@ -1,0 +1,12 @@
+# CPU-only PyTorch keeps installs small (no GPU needed for FinBERT on headlines)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+transformers>=4.40
+pandas>=2.1
+numpy>=1.26
+scipy>=1.11
+feedparser>=6.0
+yfinance>=0.2.40
+streamlit>=1.36
+plotly>=5.20
+pytest>=8.0
