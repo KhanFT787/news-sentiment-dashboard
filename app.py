@@ -108,7 +108,7 @@ fig.update_yaxes(title_text="Price (USD)", row=1, col=1)
 fig.update_yaxes(title_text="Sentiment", range=[-1, 1], row=2, col=1)
 fig.update_layout(height=520, margin=dict(l=10, r=10, t=10, b=10), hovermode="x unified",
                   legend=dict(orientation="h", y=1.04, x=0))
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, width="stretch")
 
 # ------------------------------------------------------------------ statistics
 scope = "all 10 stocks pooled" if pooled else name
@@ -143,7 +143,7 @@ with right:
         bfig.update_layout(title="Average abnormal return by sentiment group", barmode="group", height=330,
                            yaxis_title="Abnormal return (%)", margin=dict(l=10, r=10, t=40, b=10),
                            legend=dict(orientation="h", y=-0.2))
-        st.plotly_chart(bfig, use_container_width=True)
+        st.plotly_chart(bfig, width="stretch")
 
 # ------------------------------------------------------------------ headlines table
 st.subheader(f"Latest {name} headlines")
@@ -151,10 +151,12 @@ label_filter = st.multiselect("Show", ["positive", "neutral", "negative"], defau
 table = stock_news[stock_news["label"].isin(label_filter)].sort_values("published_utc", ascending=False)
 st.dataframe(
     table[["published_utc", "headline", "source", "label", "score", "link"]].head(300),
-    hide_index=True, use_container_width=True,
+    hide_index=True, width="stretch",
     column_config={
         "published_utc": st.column_config.DatetimeColumn("Published (UTC)", format="D MMM YYYY, HH:mm"),
         "headline": st.column_config.TextColumn("Headline", width="large"),
+        "source": st.column_config.TextColumn("Source"),
+        "label": st.column_config.TextColumn("Label"),
         "score": st.column_config.ProgressColumn("Score", min_value=-1, max_value=1, format="%+.2f"),
         "link": st.column_config.LinkColumn("Link", display_text="open"),
     },
