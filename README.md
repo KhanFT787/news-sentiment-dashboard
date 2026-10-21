@@ -3,7 +3,7 @@
 Does the tone of financial news line up with how a stock moves?
 This tool scores news headlines with **FinBERT**, an AI language model trained on financial text, and compares daily sentiment with **market-adjusted stock returns** for ten large global companies. New headlines are collected and scored automatically every trading day.
 
-**[▶ Live demo](https://news-sentiment-dashboard.streamlit.app)** · no install, runs in your browser
+**[▶ Live demo](https://news-sentiment-dashboard-787.streamlit.app)** · no install, runs in your browser
 
 ![Dashboard screenshot](assets/screenshot.png)
 
